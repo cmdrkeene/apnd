@@ -55,7 +55,9 @@ module APND
       @apple.open do |sock|
         while line = sock.gets
           payload = line.strip.unpack('N1n1H140')
-          tokens << [payload[2].strip, Time.at(payload[0])]
+          puts payload.inspect
+          tokens << [payload[2].strip, payload[0]]
+          # tokens << [payload[2].strip, Time.at(payload[0])]
         end
       end
       tokens
